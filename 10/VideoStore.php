@@ -60,11 +60,11 @@ class VideoStore
 	{
 
 		foreach ($this->inventory as $movie) {
-			if (!$movie->getStatus()) {
-				echo "Title: " . $movie->getTitle() . " Rating: " . $movie->getRating() . PHP_EOL;
+
+				echo "Title: " . $movie->getTitle() . " | Rating: " . $movie->getRating() .
+					($movie->getStatus() ? " | Checked out " : " | In store ") . PHP_EOL;
 				echo PHP_EOL;
 
-			}
 
 		}
 
