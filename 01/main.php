@@ -7,3 +7,6 @@
 
 require "Product.php";
 
+
+$test = new Main();
+$test->printAll();

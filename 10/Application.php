@@ -1,16 +1,15 @@
 <?php
 
 require "VideoStore.php";
+
 class Application
 {
 	private VideoStore $videoStore;
-
 
 	public function __construct(VideoStore $videoStore)
 	{
 		$this->videoStore = $videoStore;
 	}
-
 
 	function run()
 	{
@@ -50,7 +49,6 @@ class Application
 		}
 	}
 
-
 	private function add_movies()
 	{
 		$title = (string)readline("Enter movie title to add to store: ");
@@ -84,8 +82,8 @@ class Application
 	private function addRating()
 	{
 		$title = readline("Enter Movie title to add rating ");
-		$rating = (float) readline("Enter rating: ");
-		$this->videoStore->usersRating($title,$rating);
+		$rating = (float)readline("Enter rating: ");
+		$this->videoStore->usersRating($title, $rating);
 
 	}
 }

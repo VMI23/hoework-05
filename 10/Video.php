@@ -2,15 +2,10 @@
 
 class Video
 {
-
 	private string $title;
-
 	private bool $checkedOut;
-
 	private float $rating;
-
 	private array $usersWhoRated;
-
 
 	public function __construct(string $title, bool $checkedOut = false, float $rating = 0.0)
 	{
@@ -36,16 +31,13 @@ class Video
 
 		$averageRating = array_sum($this->usersWhoRated) / count($this->usersWhoRated);
 
-
 		$this->rating = $averageRating;
 	}
-
 
 	public function getTitle(): string
 	{
 		return $this->title;
 	}
-
 
 	public function getRating(): float
 	{
@@ -56,6 +48,5 @@ class Video
 	{
 		return $this->checkedOut;
 	}
-
 
 }

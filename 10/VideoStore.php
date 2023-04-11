@@ -1,14 +1,12 @@
 <?php
 
 require "Video.php";
+
 class VideoStore
 {
 	private ?Video $movie;
 	private array $inventory = [];
 
-
-	//The VideoStore will have the following behaviour:
-	//add a new video (by title) to the inventory;
 
 	public function __construct(...$movie)
 	{
@@ -28,7 +26,6 @@ class VideoStore
 
 	public function checkOut($title)
 	{
-
 		foreach ($this->inventory as $movie) {
 			if ($movie->getTitle() == $title) {
 				$movie->checkOut();
@@ -72,6 +69,5 @@ class VideoStore
 		}
 
 	}
-
 
 }

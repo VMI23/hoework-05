@@ -7,7 +7,7 @@ class Product
 
 	private int $amount;
 
-	public function __construct(string $name,float $startPrice, int $amount)
+	public function __construct(string $name, float $startPrice, int $amount)
 	{
 		$this->name = $name;
 		$this->startPrice = $startPrice;
@@ -15,12 +15,10 @@ class Product
 	}
 
 
-	public function printProduct(){
-
-		$text =  $this->name." price ".$this->startPrice.", amount ".$this->amount;
+	public function printProduct()
+	{
+		$text = $this->name . " price " . $this->startPrice . ", amount " . $this->amount;
 		return $text;
-
-
 	}
 
 	public function setStartPrice(float $startPrice): void
@@ -34,7 +32,6 @@ class Product
 	}
 
 
-
 }
 
 
@@ -44,28 +41,25 @@ class Main
 
 	public function main()
 	{
-		$this->products = [
-			new Product("Banana",1.1,13),
-			new Product("Logitech mouse",70.00,14),
+		$this->products = [new Product("Banana",
+			1.1, 13),
+			new Product("Logitech mouse", 70.00, 14),
 			new Product("iPhone 5s", 999.99, 3),
 			new Product("Epson EB-U05", 440.46, 1),
-		];
+			];
 	}
 
-	public function printAll(){
+	public function printAll()
+	{
+		foreach ($this->products as $product) {
 
-		foreach ($this->products as $product){
-
-			echo $product->printProduct().PHP_EOL;
+			echo $product->printProduct() . PHP_EOL;
 		}
-
 	}
 
 }
 
 
 
-$test = new Main();
-$test->printAll();
 
 

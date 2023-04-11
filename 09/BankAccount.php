@@ -11,24 +11,21 @@ class BankAccount
 
 	private float $balance;
 	private string $name;
+
 	public function __construct(float $balance, string $name)
 	{
 		$this->balance = $balance;
 		$this->name = $name;
 	}
 
-
 	public function show_user_name_and_balance(): string
 	{
-		//Your method should return a string that contains the account's name and balance separated by a comma and space.
-		// For example, if an account object named ben has the name "Benson" and a balance of 17.25,
-		// the call of ben.show_user_name_and_balance() should return: Benson, $17.25
 
-		if($this->balance < 0.00){
-			return $this->name . ", -$" . abs(number_format($this->balance,2));
+		if ($this->balance < 0.00) {
+			return $this->name . ", -$" . abs(number_format($this->balance, 2));
 
 		}
-		return $this->name . ", $" . number_format($this->balance,2);
+		return $this->name . ", $" . number_format($this->balance, 2);
 	}
 
 }
