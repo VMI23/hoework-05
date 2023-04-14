@@ -18,7 +18,7 @@ class BankAccount
 		$this->name = $name;
 	}
 
-	public function show_user_name_and_balance(): string
+	public function showUserNameAndBalance(): string
 	{
 
 		if ($this->balance < 0.00) {
@@ -32,4 +32,4 @@ class BankAccount
 
 $ben = new BankAccount(17.25, "Benson");
 
-echo $ben->show_user_name_and_balance();
+echo $ben->showUserNameAndBalance();

@@ -2,6 +2,8 @@
 
 class FuelGauge
 {
+
+
 	private int $fuelAmount;
 
 	public function __construct(int $fuelAmount = 0)

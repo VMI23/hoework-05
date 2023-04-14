@@ -46,7 +46,8 @@ class VideoStore
 	}
 
 	public function usersRating($title, $rating)
-	{
+	{//var uz video klasi ->
+
 		foreach ($this->inventory as $movie) {
 			if ($movie->getTitle() == $title) {
 				$movie->receiveRating($rating);
@@ -60,9 +61,10 @@ class VideoStore
 	{
 
 		foreach ($this->inventory as $movie) {
+			$statuss = ($movie->getStatus() ? " | Checked out " : " | In store ");
 
-				echo "Title: " . $movie->getTitle() . " | Rating: " . $movie->getRating() .
-					($movie->getStatus() ? " | Checked out " : " | In store ") . PHP_EOL;
+				echo "Title: " . $movie->getTitle() . " | Rating: " . $movie->getRating() .$statuss
+					 . PHP_EOL;
 				echo PHP_EOL;
 
 

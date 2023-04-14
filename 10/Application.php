@@ -11,7 +11,7 @@ class Application
 		$this->videoStore = $videoStore;
 	}
 
-	function run()
+	function run() : void
 	{
 		while (true) {
 			echo "Choose the operation you want to perform \n";
@@ -29,16 +29,16 @@ class Application
 					echo "Bye!";
 					die;
 				case 1:
-					$this->add_movies();
+					$this->addMovies();
 					break;
 				case 2:
-					$this->rent_video();
+					$this->rentVideo();
 					break;
 				case 3:
-					$this->return_video();
+					$this->returnVideo();
 					break;
 				case 4:
-					$this->list_inventory();
+					$this->listInventory();
 					break;
 				case 5:
 					$this->addRating();
@@ -49,15 +49,15 @@ class Application
 		}
 	}
 
-	private function add_movies()
+	private function addMovies()
 	{
 		$title = (string)readline("Enter movie title to add to store: ");
 
 
-		$this->videoStore->addMovie($title);
+		$this->videoStore->addMovies($title);
 	}
 
-	private function rent_video()
+	private function rentVideo()
 	{
 		$title = readline("Enter movie title to rent video: ");
 
@@ -65,7 +65,7 @@ class Application
 		$this->videoStore->checkOut($title);
 	}
 
-	private function return_video()
+	private function returnVideo()
 	{
 		$title = readline("Enter movie title to rent video: ");
 
@@ -73,7 +73,7 @@ class Application
 		$this->videoStore->returnMovie($title);
 	}
 
-	private function list_inventory()
+	private function listInventory()
 	{
 
 		$this->videoStore->listItemsInStore();
