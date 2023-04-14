@@ -4,14 +4,13 @@ class Video
 {
 	private string $title;
 	private bool $checkedOut;
-	private float $rating;
-	private array $usersWhoRated;
 
-	public function __construct(string $title, bool $checkedOut = false, float $rating = 0.0)
+	private array $ratings = [];
+
+	public function __construct(string $title, bool $checkedOut = false)
 	{
 		$this->title = $title;
 		$this->checkedOut = $checkedOut;
-		$this->rating = $rating;
 	}
 
 	public function checkOut()
@@ -25,13 +24,11 @@ class Video
 
 	}
 
-	public function receiveRating($rating)
+	public function receiveRating($rating): void
 	{
-		$this->usersWhoRated[] = $rating;
+		$this->ratings[] = $rating;
 
-		$averageRating = array_sum($this->usersWhoRated) / count($this->usersWhoRated);
 
-		$this->rating = $averageRating;
 	}
 
 	public function getTitle(): string
@@ -41,7 +38,11 @@ class Video
 
 	public function getRating(): float
 	{
-		return $this->rating;
+		if (count($this->ratings) > 0) {
+			return array_sum($this->ratings) / count($this->ratings);
+		}
+		return 0;
+
 	}
 
 	public function getStatus()

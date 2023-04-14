@@ -11,7 +11,7 @@ class Application
 		$this->videoStore = $videoStore;
 	}
 
-	function run() : void
+	function run(): void
 	{
 		while (true) {
 			echo "Choose the operation you want to perform \n";
@@ -54,23 +54,23 @@ class Application
 		$title = (string)readline("Enter movie title to add to store: ");
 
 
-		$this->videoStore->addMovies($title);
+		$this->videoStore->addMovie($title);
 	}
 
 	private function rentVideo()
 	{
-		$title = readline("Enter movie title to rent video: ");
+		$this->listInventory();
+		$id = readline("Enter movie ID to rent video: ");
 
 
-		$this->videoStore->checkOut($title);
-	}
+		$video = $this->videoStore->getByIndex($id);
 
-	private function returnVideo()
-	{
-		$title = readline("Enter movie title to rent video: ");
+		if ($video == null) {
+			echo "Video not found" . PHP_EOL;
+			return;
+		}
 
-
-		$this->videoStore->returnMovie($title);
+		$video->checkOut();
 	}
 
 	private function listInventory()
@@ -79,11 +79,46 @@ class Application
 		$this->videoStore->listItemsInStore();
 	}
 
+	private function returnVideo()
+	{
+		$this->listInventory();
+		$id = readline("Enter movie ID to return video: ");
+
+
+		$video = $this->videoStore->getByIndex($id);
+
+		if ($video == null) {
+			echo "Video not found" . PHP_EOL;
+			return;
+		}
+
+		$video->returned();
+
+
+	}
+
 	private function addRating()
 	{
-		$title = readline("Enter Movie title to add rating ");
+		$this->listInventory();
+
+		$id = readline("Enter Movie ID to add rating ");
+		$video = $this->videoStore->getByIndex($id);
+
+		if ($video == null) {
+			echo "Video not found" . PHP_EOL;
+			return;
+		}
+
 		$rating = (float)readline("Enter rating: ");
-		$this->videoStore->usersRating($title, $rating);
+
+		if ($rating <= 0 || $rating > 10) {
+			echo "Invalid rating" . PHP_EOL;
+			return;
+		}
+
+		$video->receiveRating($rating);
+
+		echo PHP_EOL;
 
 	}
 }

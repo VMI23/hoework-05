@@ -45,30 +45,25 @@ class VideoStore
 
 	}
 
-	public function usersRating($title, $rating)
-	{//var uz video klasi ->
-
-		foreach ($this->inventory as $movie) {
-			if ($movie->getTitle() == $title) {
-				$movie->receiveRating($rating);
-			}
-		}
-
-	}
 
 
 	public function listItemsInStore()
 	{
 
-		foreach ($this->inventory as $movie) {
+		foreach ($this->inventory as $key => $movie) {
 			$statuss = ($movie->getStatus() ? " | Checked out " : " | In store ");
 
-				echo "Title: " . $movie->getTitle() . " | Rating: " . $movie->getRating() .$statuss
-					 . PHP_EOL;
-				echo PHP_EOL;
+			echo $key . " Title: " . $movie->getTitle() . " | Rating: " . $movie->getRating() . $statuss . PHP_EOL;
+			echo PHP_EOL;
 
 
 		}
+
+	}
+
+	public function getByIndex(int $id): ?Video
+	{
+		return $this->inventory[$id] ?? null;
 
 	}
 
